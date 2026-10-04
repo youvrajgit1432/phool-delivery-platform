@@ -1,0 +1,3 @@
+# Disable directory listings for the platform root
+Options -Indexes
+DirectoryIndex index.php

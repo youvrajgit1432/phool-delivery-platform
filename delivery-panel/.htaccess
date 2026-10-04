@@ -1,0 +1,72 @@
+RewriteEngine On
+
+# Remove trailing slashes from URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+# Handle requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?url=$1 [QSA,L]
+
+# Security Headers
+<FilesMatch "\.php$">
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</FilesMatch>
+
+# Deny access to sensitive files
+<FilesMatch "^\.env|composer.json|composer.lock|\.git|\.gitignore|README.md|SETUP.md">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Deny access to directories
+<FilesMatch "^\.|^database|^storage|^vendor|^bootstrap">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Set correct MIME types
+AddType application/javascript js
+AddType application/json json
+AddEncoding gzip js json
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache control
+<FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|svg)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=3600, must-revalidate"
+</FilesMatch>
+
+# SSL redirect (uncomment if using HTTPS)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Disable directory listing
+Options -Indexes
+
+# Deny direct HTTP access to this directory's files unless the URL explicitly points to /public/
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !/phool-delivery/delivery-panel/public/ [NC]
+    RewriteRule ^.*$ - [F]
+</IfModule>
+
+# Deny HTTP access to sensitive directories if DocumentRoot is misconfigured
+RedirectMatch 403 ^/phool-delivery/delivery-panel/(?:app|bootstrap|config|storage|tests|vendor|database)/.*$
+
+# Deny access to environment files
+<FilesMatch "^\.env$">
+    Require all denied
+</FilesMatch>

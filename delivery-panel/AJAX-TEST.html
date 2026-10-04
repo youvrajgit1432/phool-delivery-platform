@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Profile Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 25px;
+        }
+        .test-item {
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 3px solid #667eea;
+            margin-bottom: 12px;
+            border-radius: 4px;
+        }
+        .test-item.pass {
+            border-left-color: #28a745;
+            background: #f0fdf4;
+        }
+        .test-item.fail {
+            border-left-color: #dc3545;
+            background: #fef2f2;
+        }
+        .status-icon {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .pass .status-icon { color: #28a745; }
+        .fail .status-icon { color: #dc3545; }
+        .pending .status-icon { color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1><i class="fas fa-flask"></i> AJAX Profile Implementation Test</h1>
+        <p class="text-muted">Test suite for AJAX functionality in rider profile page</p>
+        
+        <div class="test-section">
+            <h4>Prerequisites</h4>
+            <div class="test-item">
+                <span class="status-icon">✓</span>
+                <strong>Logged In:</strong> User must be logged in as a rider
+                <button class="btn btn-sm btn-primary float-end" onclick="checkLogin()">Check</button>
+            </div>
+            <div class="test-item">
+                <span class="status-icon">✓</span>
+                <strong>Browser Console:</strong> Open with F12 to see detailed request logs
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h4>Test Cases</h4>
+            
+            <div class="test-item pending">
+                <span class="status-icon">1</span>
+                <strong>Form Submission via AJAX:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Navigate to profile page</li>
+                    <li>Click "Edit" on Personal Information</li>
+                    <li>Change first name</li>
+                    <li>Click "Save Changes"</li>
+                    <li>Verify: Green notification appears, no page reload initially</li>
+                    <li>Page reloads after 1.5 seconds</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">2</span>
+                <strong>AJAX Headers:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Open browser DevTools (F12)</li>
+                    <li>Go to Network tab</li>
+                    <li>Submit any profile form</li>
+                    <li>Verify: Request has "X-Requested-With: XMLHttpRequest" header</li>
+                    <li>Verify: Response has "Content-Type: application/json"</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">3</span>
+                <strong>Password Change with AJAX:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Navigate to profile page</li>
+                    <li>Click "Change Password" in Security section</li>
+                    <li>Enter current password</li>
+                    <li>Enter new password (min 6 chars)</li>
+                    <li>Confirm password</li>
+                    <li>Click "Update Password"</li>
+                    <li>Verify: Success notification appears</li>
+                    <li>Verify: Form clears after submission</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">4</span>
+                <strong>Client-side Validation:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Navigate to profile > Change Password</li>
+                    <li>Try to submit with mismatched passwords</li>
+                    <li>Verify: Error notification "New passwords do not match"</li>
+                    <li>Try with password less than 6 chars</li>
+                    <li>Verify: Error notification "Password must be at least 6 characters"</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">5</span>
+                <strong>Server-side Validation:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Navigate to profile > Change Password</li>
+                    <li>Enter wrong current password</li>
+                    <li>Enter any new password (matching)</li>
+                    <li>Submit form</li>
+                    <li>Verify: Red error notification "Current password is incorrect"</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">6</span>
+                <strong>Loading State:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Navigate to profile</li>
+                    <li>Click "Save Changes" on any section</li>
+                    <li>Verify: Button text changes to "Saving..." with spinner</li>
+                    <li>Verify: Button is disabled during submission</li>
+                    <li>Verify: Button returns to normal on completion</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">7</span>
+                <strong>Multiple Section Updates:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Update Personal Information via AJAX</li>
+                    <li>Wait for success notification</li>
+                    <li>Update Address Information via AJAX</li>
+                    <li>Verify: Each section updates independently</li>
+                    <li>Verify: No conflicts or errors</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">8</span>
+                <strong>Error Handling:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Open browser console</li>
+                    <li>Try to update profile</li>
+                    <li>Verify: Any errors display in red notification</li>
+                    <li>Verify: User can retry after error</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">9</span>
+                <strong>Notification System:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Submit any profile form</li>
+                    <li>Verify: Green success notification appears top-right</li>
+                    <li>Verify: Contains "Success!" heading</li>
+                    <li>Verify: Has close (X) button</li>
+                    <li>Verify: Auto-dismisses after 5 seconds</li>
+                </ol>
+            </div>
+
+            <div class="test-item pending">
+                <span class="status-icon">10</span>
+                <strong>JSON Response Format:</strong>
+                <p class="mb-0 small">Steps:</p>
+                <ol class="small mb-0">
+                    <li>Open DevTools > Network tab</li>
+                    <li>Submit profile form</li>
+                    <li>Click on the profile POST request</li>
+                    <li>View Response tab</li>
+                    <li>Verify: JSON with "success": true and "message" field</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h4>Expected Behaviors</h4>
+            <table class="table table-sm">
+                <tr>
+                    <td><strong>Scenario</strong></td>
+                    <td><strong>Expected Behavior</strong></td>
+                </tr>
+                <tr>
+                    <td>Valid update</td>
+                    <td>Green notification → Page reloads after 1.5s</td>
+                </tr>
+                <tr>
+                    <td>Invalid data</td>
+                    <td>Red error notification → Form stays open for retry</td>
+                </tr>
+                <tr>
+                    <td>Password mismatch</td>
+                    <td>Red notification "New passwords do not match"</td>
+                </tr>
+                <tr>
+                    <td>Wrong current password</td>
+                    <td>Red notification "Current password is incorrect"</td>
+                </tr>
+                <tr>
+                    <td>Empty required field</td>
+                    <td>HTML5 validation or red notification</td>
+                </tr>
+                <tr>
+                    <td>Server error</td>
+                    <td>Red notification with error message</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="test-section">
+            <h4>Browser Console Debugging</h4>
+            <div class="alert alert-info">
+                <p><strong>Enable Console Logging:</strong> Add the following to check request/response:</p>
+                <code class="small">
+// In browser console:<br>
+const originalFetch = window.fetch;<br>
+window.fetch = function(...args) {<br>
+&nbsp;&nbsp;console.log('AJAX Request:', args[0], args[1]);<br>
+&nbsp;&nbsp;return originalFetch.apply(this, args)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.then(r => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('Response Status:', r.status);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return r;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+};
+                </code>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h4>Success Criteria</h4>
+            <ul>
+                <li>✓ All form submissions work without page reload</li>
+                <li>✓ AJAX headers are sent correctly</li>
+                <li>✓ JSON responses are parsed correctly</li>
+                <li>✓ Notifications appear and dismiss automatically</li>
+                <li>✓ Loading states work during submission</li>
+                <li>✓ Validation works both client and server-side</li>
+                <li>✓ Password updates are secure (bcrypt verification)</li>
+                <li>✓ Multiple form sections work independently</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h4>Quick Links</h4>
+            <div class="d-grid gap-2">
+                <a href="/delivery-panel/public/index.php?route=/profile" class="btn btn-primary">Go to Profile Page</a>
+                <a href="javascript:void(0)" onclick="window.open('', '_blank').location.href = 'about:blank';" class="btn btn-secondary">Open DevTools (F12)</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function checkLogin() {
+            // This would need to check if user is logged in
+            alert('Check the browser console after logging into the profile page');
+        }
+    </script>
+</body>
+</html>

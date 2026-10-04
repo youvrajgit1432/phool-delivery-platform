@@ -1,0 +1,154 @@
+{
+  "name": "Phool Delivery - Rider Panel",
+  "short_name": "Rider App",
+  "description": "Phool Delivery rider app - Manage orders, track deliveries, view earnings, and optimize your delivery performance",
+  "start_url": "/delivery-panel/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "scope": "/delivery-panel/",
+  "categories": ["productivity", "business"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/delivery-panel/public/assets/img/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/delivery-panel/public/assets/img/screenshot-mobile.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/delivery-panel/public/assets/img/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Assigned Orders",
+      "short_name": "Orders",
+      "description": "View your assigned orders",
+      "url": "/delivery-panel/?page=orders",
+      "icons": [
+        {
+          "src": "/delivery-panel/public/assets/img/icon-shortcut-orders.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "My Earnings",
+      "short_name": "Earnings",
+      "description": "Check your earnings and payouts",
+      "url": "/delivery-panel/?page=earnings",
+      "icons": [
+        {
+          "src": "/delivery-panel/public/assets/img/icon-shortcut-earnings.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "My Profile",
+      "short_name": "Profile",
+      "description": "View and edit your profile",
+      "url": "/delivery-panel/?page=profile",
+      "icons": [
+        {
+          "src": "/delivery-panel/public/assets/img/icon-shortcut-profile.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Support",
+      "short_name": "Support",
+      "description": "Get help and report issues",
+      "url": "/delivery-panel/?page=support",
+      "icons": [
+        {
+          "src": "/delivery-panel/public/assets/img/icon-shortcut-support.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/delivery-panel/?action=share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+delivery",
+      "url": "/delivery-panel/?order=%s"
+    }
+  ]
+}

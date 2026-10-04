@@ -1,0 +1,22 @@
+{
+    "name": "phool-delivery/delivery-rider-panel",
+    "description": "Delivery Rider Panel for Phool Delivery - Complete rider management system",
+    "type": "project",
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phool\\DeliveryPanel\\": "app/"
+        },
+        "files": [
+            "bootstrap/helpers.php"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}

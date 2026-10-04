@@ -1,0 +1,60 @@
+# Environment / secrets
+.env
+*.env
+!.env.example
+
+# NOTE: vendor/ is intentionally committed so the project runs from a clean
+# clone without a Composer install step (no build step required).
+
+# Runtime / storage
+/storage/
+/admin/storage/
+/vendor-panel/storage/
+/delivery-panel/storage/
+/uploads/
+/admin/uploads/
+/vendor-panel/uploads/
+/delivery-panel/uploads/
+/cache/
+/lscache/
+/tmp/
+*_cache/
+
+# Logs
+*.log
+*.error.log
+error_log
+/logs/
+
+# Hosting / certs / archives
+ssl/
+*.key
+*.crt
+*.csr
+*.pem
+*.zip
+*.gz
+*.tar
+*.tar.gz
+
+# Media (populated locally; not committed)
+/public_html/media_files/
+/public_html/product_images/
+/public_html/profile_images/
+/public_html/ad_images/
+/public_html/carousel_images/
+/public_html/notice_images/
+/public_html/wallet_qr_codes/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+node_modules/
+
+# Local DB dumps (schema.sql and demo_seed.sql are intentionally committed)
+/database/*.sql
+!/database/schema.sql
+!/database/demo_seed.sql

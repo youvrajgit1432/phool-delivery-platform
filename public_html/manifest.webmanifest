@@ -1,0 +1,112 @@
+{
+  "name": "Phool Delivery",
+  "short_name": "Phool Delivery",
+  "description": "Fresh flowers delivery in Banepa,Bhaktapur,Kathmandu And Dhulikhel  - Order beautiful flowers,bouquets for any occasion",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF6B01",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["shopping", "food", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "72x72",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "96x96",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "128x128",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "144x144",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "152x152",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "256x256",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "384x384",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/img/screenshot-mobile.jpg",
+      "sizes": "375x667",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/assets/img/screenshot-desktop.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Order Flowers",
+      "short_name": "Order",
+      "description": "Quick order fresh flowers",
+      "url": "/products",
+      "icons": [
+        {
+          "src": "/assets/img/icons/icon-order.jpg",
+          "sizes": "96x96",
+          "type": "image/jpg"
+        }
+      ]
+    },
+    {
+      "name": "My Cart",
+      "short_name": "Cart",
+      "description": "View your shopping cart",
+      "url": "/cart",
+      "icons": [
+        {
+          "src": "/assets/img/icons/icon-cart.jpg",
+          "sizes": "96x96",
+          "type": "image/jpg"
+        }
+      ]
+    }
+  ]
+}

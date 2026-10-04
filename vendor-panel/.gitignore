@@ -1,0 +1,38 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+vendor/
+composer.lock
+node_modules/
+
+# Storage
+storage/uploads/*
+storage/logs/*
+storage/cache/*
+storage/sessions/*
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*~
+.swp
+.swo
+
+# Cache
+*.cache
+
+# Session files
+*.session

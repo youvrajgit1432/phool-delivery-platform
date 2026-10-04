@@ -1,0 +1,63 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# Composer
+vendor/
+composer.lock
+
+# Storage
+storage/logs/*
+storage/cache/*
+storage/sessions/*
+!storage/logs/.gitkeep
+!storage/cache/.gitkeep
+!storage/sessions/.gitkeep
+
+# Uploads
+uploads/riders/*
+!uploads/riders/.gitkeep
+
+# Node modules (if using frontend build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.phpunit.result.cache
+
+# OS
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# PHP
+*.php~
+
+# Debug
+debug.log
+error.log
+
+# Backups
+*.sql.bak
+database/*.bak

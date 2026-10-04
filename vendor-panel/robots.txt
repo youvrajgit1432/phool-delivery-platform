@@ -1,0 +1,58 @@
+# Phool Delivery Vendor Panel - robots.txt
+# This file guides search engines on how to crawl and index the vendor panel
+
+# Default rules for all bots
+User-agent: *
+
+# Allow crawling of public pages
+Allow: /dashboard
+Allow: /orders
+Allow: /products
+Allow: /payouts
+Allow: /account
+Allow: /analytics
+Allow: /assets/
+
+# Disallow private/sensitive pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /logout
+Disallow: /settings/private
+Disallow: /payment/
+Disallow: /bank/
+Disallow: /documents/
+Disallow: /private/
+
+# Disallow access to user-specific pages that shouldn't be indexed
+Disallow: /vendor/*/edit
+Disallow: /messages/*/
+Disallow: /*/private
+
+# Disallow temporary pages
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /uploads/temp/
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Disallow bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://phooldelivery.com/vendor-panel/sitemap.xml

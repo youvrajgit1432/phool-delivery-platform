@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Phool Delivery Rider Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .offline-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .offline-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .offline-message {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .offline-tips {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .offline-tips h3 {
+            color: #1e293b;
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .offline-tips ul {
+            list-style: none;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .offline-tips li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .offline-tips li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #fee2e2;
+            color: #dc2626;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .status-indicator.online {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .retry-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .retry-button:active {
+            transform: translateY(0);
+        }
+
+        .cached-notice {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .offline-icon {
+                font-size: 60px;
+                margin-bottom: 15px;
+            }
+
+            .offline-message {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        
+        <div class="status-indicator" id="statusIndicator">
+            <div class="status-dot"></div>
+            <span>You are offline</span>
+        </div>
+
+        <h1>No Internet Connection</h1>
+        
+        <p class="offline-message">
+            It looks like you've lost your internet connection. However, you can still access previously loaded content!
+        </p>
+
+        <div class="offline-tips">
+            <h3>What you can do:</h3>
+            <ul>
+                <li>View previously loaded orders and details</li>
+                <li>Check your earnings history and statistics</li>
+                <li>Read your profile information</li>
+                <li>View cached notifications</li>
+            </ul>
+        </div>
+
+        <p class="offline-message">
+            Your actions (like accepting orders) will sync when your connection is restored.
+        </p>
+
+        <button class="retry-button" onclick="retryConnection()">
+            <span class="spinner" id="spinner" style="display: none;"></span>
+            <span id="retryText">Retry Connection</span>
+        </button>
+
+        <div class="cached-notice">
+            💾 This page and some content is cached for offline viewing. You may have limited access to real-time updates.
+        </div>
+    </div>
+
+    <script>
+        // Check connection status
+        function checkConnection() {
+            const hasConnection = navigator.onLine;
+            const statusIndicator = document.getElementById('statusIndicator');
+            const retryButton = document.querySelector('.retry-button');
+            const spinner = document.getElementById('spinner');
+            const retryText = document.getElementById('retryText');
+
+            if (hasConnection) {
+                statusIndicator.classList.add('online');
+                statusIndicator.innerHTML = '<div class="status-dot"></div><span>Connection restored!</span>';
+                retryButton.style.display = 'none';
+                
+                // Redirect to main app after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '/delivery-panel/';
+                }, 2000);
+            }
+        }
+
+        // Retry connection
+        function retryConnection() {
+            const retryButton = document.querySelector('.retry-button');
+            const spinner = document.getElementById('spinner');
+            const retryText = document.getElementById('retryText');
+
+            spinner.style.display = 'inline-block';
+            retryText.textContent = 'Checking...';
+            retryButton.disabled = true;
+
+            // Attempt to fetch a lightweight resource to check connection
+            fetch('/delivery-panel/manifest.webmanifest', { cache: 'no-store' })
+                .then(response => {
+                    if (response.ok) {
+                        checkConnection();
+                    }
+                })
+                .catch(error => {
+                    console.error('Connection check failed:', error);
+                    spinner.style.display = 'none';
+                    retryText.textContent = 'Still offline, retrying...';
+                    retryButton.disabled = false;
+                    
+                    // Try again in 3 seconds
+                    setTimeout(() => {
+                        retryText.textContent = 'Retry Connection';
+                    }, 3000);
+                });
+        }
+
+        // Listen for online event
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', () => {
+            console.log('Connection lost');
+        });
+
+        // Check connection on page load
+        window.addEventListener('load', checkConnection);
+
+        // Periodically check connection
+        setInterval(checkConnection, 5000);
+    </script>
+</body>
+</html>
