@@ -14,6 +14,24 @@ rider/last-mile delivery app around a single order lifecycle.
 
 ---
 
+![Phool Delivery customer storefront](docs/images/customer/01-home.png)
+
+## Platform at a Glance
+
+One platform, four connected experiences sharing a single order lifecycle and
+one demo database.
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="docs/images/customer/01-home.png" alt="Customer storefront" width="100%"><br><sub><b>Customer</b> — browse, order, track</sub></td>
+    <td width="50%" align="center"><img src="docs/images/admin/02-dashboard.png" alt="Admin dashboard" width="100%"><br><sub><b>Admin</b> — operations back office</sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="docs/images/vendor/02-dashboard.png" alt="Vendor dashboard" width="100%"><br><sub><b>Vendor</b> — manage products &amp; orders</sub></td>
+    <td width="50%" align="center"><img src="docs/images/rider/02-dashboard.png" alt="Rider dashboard" width="100%"><br><sub><b>Rider</b> — last-mile delivery</sub></td>
+  </tr>
+</table>
+
 ## Architecture
 
 ```
@@ -28,6 +46,81 @@ Order lifecycle:
 ```
 Customer → Order → Admin → Vendor (accept/process) → Rider (pickup/deliver) → Delivery complete
 ```
+
+```mermaid
+flowchart LR
+    C[Customer] --> O[Order]
+    O --> A[Admin]
+    A --> V[Vendor]
+    V --> R[Rider]
+    R --> D[Delivered]
+    D --> C
+```
+
+## Product Tour
+
+### Customer Experience
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/customer/01-home.png" alt="Storefront home" width="100%"></td>
+    <td width="50%"><img src="docs/images/customer/02-catalog.png" alt="Product catalog" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/customer/03-product.png" alt="Product detail" width="100%"></td>
+    <td width="50%"><img src="docs/images/customer/04-cart.png" alt="Shopping cart" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/customer/05-checkout.png" alt="Checkout" width="100%"></td>
+    <td width="50%"><img src="docs/images/customer/06-orders.png" alt="Order history" width="100%"></td>
+  </tr>
+</table>
+
+### Admin Operations
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/admin/02-dashboard.png" alt="Admin dashboard" width="100%"></td>
+    <td width="50%"><img src="docs/images/admin/03-orders.png" alt="Admin orders" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/admin/04-order-detail.png" alt="Order detail" width="100%"></td>
+    <td width="50%"><img src="docs/images/admin/05-products.png" alt="Product management" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/admin/06-vendors.png" alt="Vendor management" width="100%"></td>
+    <td width="50%"><img src="docs/images/admin/07-riders.png" alt="Rider management" width="100%"></td>
+  </tr>
+</table>
+
+### Vendor Marketplace
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/vendor/02-dashboard.png" alt="Vendor dashboard" width="100%"></td>
+    <td width="50%"><img src="docs/images/vendor/03-products.png" alt="Vendor products" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/vendor/04-orders.png" alt="Vendor orders" width="100%"></td>
+    <td width="50%"><img src="docs/images/vendor/05-payouts.png" alt="Vendor payouts" width="100%"></td>
+  </tr>
+</table>
+
+### Last-Mile Rider
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/rider/02-dashboard.png" alt="Rider dashboard" width="100%"></td>
+    <td width="50%"><img src="docs/images/rider/03-assigned-orders.png" alt="Assigned orders" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/rider/04-delivery-workflow.png" alt="Delivery workflow" width="100%"></td>
+    <td width="50%"><img src="docs/images/rider/05-earnings.png" alt="Rider earnings" width="100%"></td>
+  </tr>
+</table>
+
+> Screenshots are captured from this sanitized demo edition using fictional
+demo data only. See [`docs/images/`](docs/images/) for the full set.
 
 ## The four experiences
 
@@ -132,6 +225,6 @@ MIT — see [LICENSE](LICENSE). Third-party components retain their own licenses
 
 ## Related project
 
-**Krishi Sathi Research** — Field Research & Agricultural Interview Management
-Platform. Originally hosted alongside this system, now maintained as a separate
-repository.
+**[Krishi Sathi Research](https://github.com/youvrajgit1432/krishi-sathi-research)**
+— Field Research & Agricultural Interview Management Platform. Originally
+hosted alongside this system, now maintained as a separate repository.
