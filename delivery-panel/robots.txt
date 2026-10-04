@@ -55,4 +55,4 @@ User-agent: SemrushBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://phooldelivery.com/delivery-panel/sitemap.xml
+Sitemap: https://phooldelivery.example/delivery-panel/sitemap.xml

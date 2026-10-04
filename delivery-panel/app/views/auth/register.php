@@ -768,7 +768,7 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="mailto:support@phooldelivery.example">support@phooldelivery.example</a></li>
-                        <li><a href="tel:+9779803962360">+977 9803962360</a></li>
+                        <li><a href="tel:+9779800000000">+977 9800000000</a></li>
                         <li><a href="#">Live Chat</a></li>
                     </ul>
                 </div>

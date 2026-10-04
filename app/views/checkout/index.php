@@ -1309,7 +1309,7 @@ let pendingOrderFormData = null; // Store form data to submit after OTP verifica
 let autoSubmitOrderAfterOtp = false; // Flag to automatically submit order after OTP
 
 // WhatsApp Business Number - CORRECTED FORMAT
-const whatsappBusinessNumber = '9803962360'; // Remove any plus signs or country codes
+const whatsappBusinessNumber = '9800000000'; // Remove any plus signs or country codes
 
 // Auto-fill street field with address data
 function autoFillStreet() {

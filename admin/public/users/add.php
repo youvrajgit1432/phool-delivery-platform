@@ -35,14 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['error_message'] = "Username or email already exists.";
         } else {
             // Set default password
-            $default_password = "Adphool1432@@";
+            $default_password = "DemoReset";
             $hashed_password = password_hash($default_password, PASSWORD_DEFAULT);
             
             // Insert new user with default password
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password, full_name, phone, role, status, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             
             if ($stmt->execute([$username, $email, $hashed_password, $full_name, $phone, $role, $status, $_SESSION['admin_id']])) {
-                $_SESSION['success_message'] = "User added successfully! Default password: Adphool1432@@";
+                $_SESSION['success_message'] = "User added successfully! Default password: DemoReset";
                 header("Location: ../users.php");
                 exit;
             } else {
@@ -79,7 +79,7 @@ include '../../app/views/layouts/hheader.php';
     <div class="card-body">
         <div class="alert alert-info">
             <i class="fas fa-info-circle me-2"></i>
-            <strong>Note:</strong> New users will be created with the default password <strong>Adphool1432@@</strong>. They will be required to change it on first login.
+            <strong>Note:</strong> New users will be created with the default password <strong>DemoReset</strong>. They will be required to change it on first login.
         </div>
         
         <form method="POST" action="">

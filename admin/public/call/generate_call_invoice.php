@@ -43,7 +43,7 @@ $company_info = [
     'name' => 'Phool Delivery',
     'powered_by' => 'Deviatr Krishi Farm',
     'address' => 'Banepa, Nepal',
-    'phone' => '+977 9844634579',
+    'phone' => '+977 9800000001',
     'email' => 'info@phooldelivery.example',
     'gst_number' => '619571560'
 ];

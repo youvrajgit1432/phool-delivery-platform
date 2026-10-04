@@ -3,7 +3,7 @@
 let cart = JSON.parse(localStorage.getItem('phool_cart')) || [];
 
 // Production environment detection - use global if available, otherwise detect
-var isProduction = window.isProduction !== undefined ? window.isProduction : (window.location.hostname.includes('phooldelivery.com') || window.location.protocol === 'https:');
+var isProduction = window.isProduction !== undefined ? window.isProduction : (window.location.hostname.includes('phooldelivery.example') || window.location.protocol === 'https:');
 // DEBUG LOGS COMPLETELY DISABLED - no console output in any environment
 var debugLog = function() {};
 // Expose globally to prevent redeclaration errors in other scripts
@@ -203,8 +203,8 @@ function detectEnvironment() {
     
     // Check if we're on online hosting
     window.isOnline = (
-        host.includes('phooldelivery.com') ||
-        host.includes('admin.phooldelivery.com') ||
+        host.includes('phooldelivery.example') ||
+        host.includes('admin.phooldelivery.example') ||
         path.includes('/home2/phooldel')
     );
     

@@ -25,7 +25,7 @@ initialized there.
 | Hardcoded DB credentials (5 files) | Replaced with `getenv('DB_*')` + safe local defaults (`root`, `phool_delivery_demo`) |
 | Firebase config (2 files) | Real keys removed; all values read from env |
 | Google OAuth (`app/config/social.php`) | client id/secret moved to env |
-| Production domains (`phooldelivery.com`) | Replaced with reserved placeholder `phooldelivery.example` / `APP_URL` |
+| Production domains (`phooldelivery.example`) | Replaced with reserved placeholder `phooldelivery.example` / `APP_URL` |
 | Production DB name fallbacks | Changed to `phool_delivery_demo` |
 | Local base path | `phool-delivery` → `phool-delivery-platform` |
 | Duplicate/artifact folders | Removed `vendor-pannnel/`, `vendor-panel/vendor-panel/`, `admin/admin/`, `admin/vendor-panel/`; renamed `delivery-pannel/` → `delivery-panel/` |

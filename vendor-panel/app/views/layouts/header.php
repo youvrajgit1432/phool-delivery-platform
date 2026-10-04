@@ -80,7 +80,7 @@
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "Vendor Support",
-            "telephone": "+977-9803962360",
+            "telephone": "+977-9800000000",
             "email": "vendor@phooldelivery.example",
             "areaServed": ["NP-BA", "NP-BH", "NP-KA"]
         },

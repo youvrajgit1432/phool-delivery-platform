@@ -371,7 +371,7 @@ class WhatsAppController {
     }
 
     private function generateWhatsAppUrl($message) {
-        $phone = "9803962360"; // Your WhatsApp business number
+        $phone = "9800000000"; // Your WhatsApp business number
         return "https://wa.me/{$phone}?text={$message}";
     }
 

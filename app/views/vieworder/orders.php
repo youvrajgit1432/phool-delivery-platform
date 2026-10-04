@@ -335,7 +335,7 @@ if (isset($error)): ?>
             <div class="modal-body">
                 <p><?= LanguageHelper::t('contact_support_desc', 'Contact our support team for assistance with confirmed orders.') ?></p>
                 <div class="support-options">
-                    <div class="support-option" data-aos="fade-right" data-aos-delay="100"><i class="fas fa-phone"></i><div><strong><?= LanguageHelper::t('call_us', 'Call Us') ?></strong><p>+977-9844634579</p></div></div>
+                    <div class="support-option" data-aos="fade-right" data-aos-delay="100"><i class="fas fa-phone"></i><div><strong><?= LanguageHelper::t('call_us', 'Call Us') ?></strong><p>+977-9800000001</p></div></div>
                     <div class="support-option" data-aos="fade-right" data-aos-delay="200"><i class="fas fa-envelope"></i><div><strong><?= LanguageHelper::t('email_us', 'Email Us') ?></strong><p>support@phooldelivery.example</p></div></div>
                     <div class="support-option" data-aos="fade-right" data-aos-delay="300"><i class="fas fa-comments"></i><div><strong><?= LanguageHelper::t('live_chat', 'Live Chat') ?></strong><p><?= LanguageHelper::t('available_24_7', 'Available 24/7') ?></p></div></div>
                 </div>

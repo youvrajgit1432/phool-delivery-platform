@@ -332,7 +332,7 @@ $meta_keywords = "phool delivery Nepal, marigold delivery, sayapatri flowers, ge
   "name": "Phool Delivery Nepal",
   "description": "Fresh sayapatri, marigold, and genda phool delivery service for Tihar, Dashain, and puja. Direct from farmers to homes in Banepa, Bhaktapur, and Kathmandu.",
   "url": "<?= $base_url ?>",
-  "telephone": "+977-9803962360",
+  "telephone": "+977-9800000000",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Banepa",
@@ -377,13 +377,13 @@ $meta_keywords = "phool delivery Nepal, marigold delivery, sayapatri flowers, ge
             <div class="contact-numbers">
                 <div class="phone-number">
                     <i class="fas fa-phone"></i>
-                    <span>9803962360</span>
-                    <a href="tel:9803962360" class="call-btn">Call Now</a>
+                    <span>9800000000</span>
+                    <a href="tel:9800000000" class="call-btn">Call Now</a>
                 </div>
                 <div class="phone-number">
                     <i class="fas fa-mobile-alt"></i>
-                    <span>9844634579</span>
-                    <a href="tel:9844634579" class="call-btn">Call Now</a>
+                    <span>9800000001</span>
+                    <a href="tel:9800000001" class="call-btn">Call Now</a>
                 </div>
             </div>
             <div class="contact-hours">

@@ -70,7 +70,7 @@ class Security {
     // Check if user has default password
     private function hasDefaultPassword($password_hash, $registration_type) {
         // For guest users or users with default password
-        $default_password = 'phool1234';
+        $default_password = 'DemoGuest';
         
         // Check if password matches the default password
         if ($registration_type === 'guest') {

@@ -122,7 +122,7 @@ class LogController {
                         
                         // If it's a guest user with default password, show reminder
                         if ($isGuestUser && $this->isUsingDefaultPassword($customer['password'])) {
-                            $_SESSION['auth_success'] = 'Welcome back! Your default password is: phool1234 (You can change it in your profile)';
+                            $_SESSION['auth_success'] = 'Welcome back! Your default password is: DemoGuest (You can change it in your profile)';
                         } else {
                             $_SESSION['auth_success'] = 'Login successful! Welcome back.';
                         }
@@ -284,8 +284,8 @@ class LogController {
                 if ($this->isUsingDefaultPassword($customer['password'])) {
                     echo json_encode([
                         'success' => true,
-                        'message' => 'Your default password is: phool1234',
-                        'default_password' => 'phool1234'
+                        'message' => 'Your default password is: DemoGuest',
+                        'default_password' => 'DemoGuest'
                     ]);
                 } else {
                     echo json_encode([
@@ -364,7 +364,7 @@ class LogController {
         }
         
         // If it's a guest user, also check the default password
-        if ($isGuestUser && $input_password === 'phool1234') {
+        if ($isGuestUser && $input_password === 'DemoGuest') {
             return true;
         }
         
@@ -375,7 +375,7 @@ class LogController {
      * Check if a guest user is still using the default password
      */
     private function isUsingDefaultPassword($stored_password_hash) {
-        return password_verify('phool1234', $stored_password_hash);
+        return password_verify('DemoGuest', $stored_password_hash);
     }
 
     private function identifierExists($field, $value) {

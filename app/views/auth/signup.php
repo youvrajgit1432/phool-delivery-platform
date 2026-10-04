@@ -166,11 +166,11 @@ $meta_keywords = "order flowers online, automatic registration, phool delivery, 
                 <h3>Need Help with Your Order?</h3>
                 <p>Our team is ready to assist you with bulk orders or special requests</p>
                 <div class="contact-buttons">
-                    <a href="tel:9803962360" class="btn btn-call">
-                        <i class="fas fa-phone"></i> Call: 9803962360
+                    <a href="tel:9800000000" class="btn btn-call">
+                        <i class="fas fa-phone"></i> Call: 9800000000
                     </a>
-                    <a href="tel:9844634579" class="btn btn-call">
-                        <i class="fas fa-phone"></i> Call: 9844634579
+                    <a href="tel:9800000001" class="btn btn-call">
+                        <i class="fas fa-phone"></i> Call: 9800000001
                     </a>
                 </div>
             </div>

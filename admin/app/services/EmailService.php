@@ -405,7 +405,7 @@ class EmailService {
                 <p>If you have any questions about your order, please contact our customer service team.</p>
                 
                 <div class='footer'>
-                    <p>Need help? Contact us at <a href='mailto:support@phooldelivery.example'>support@phooldelivery.example</a> or call 9844634579</p>
+                    <p>Need help? Contact us at <a href='mailto:support@phooldelivery.example'>support@phooldelivery.example</a> or call 9800000001</p>
                     <p>&copy; 2024 Phool Delivery. All rights reserved.</p>
                 </div>
             </div>

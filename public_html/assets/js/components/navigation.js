@@ -1,7 +1,7 @@
 // public/assets/js/components/navigation.js
 
 // Production environment detection - use global if available, otherwise detect
-var isProduction = window.isProduction !== undefined ? window.isProduction : (window.location.hostname.includes('phooldelivery.com') || window.location.protocol === 'https:');
+var isProduction = window.isProduction !== undefined ? window.isProduction : (window.location.hostname.includes('phooldelivery.example') || window.location.protocol === 'https:');
 // DEBUG LOGS COMPLETELY DISABLED - no console output in any environment
 var debugLog = function() {};
 // Expose globally to prevent redeclaration errors in other scripts

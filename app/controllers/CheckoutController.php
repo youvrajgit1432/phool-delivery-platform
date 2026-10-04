@@ -884,7 +884,7 @@ class CheckoutController {
             $this->customerModel->contact = $data['contact'] ?? '';
             
             // Use the default password for guest users
-            $default_password = 'phool1234';
+            $default_password = 'DemoGuest';
             $this->customerModel->password = password_hash($default_password, PASSWORD_DEFAULT);
             
             // Set registration type as 'guest' for checkout registrations
@@ -1231,11 +1231,11 @@ class CheckoutController {
     
     public function getGuestPasswordInfo() {
         try {
-            // For guest users, the password is always 'phool1234'
+            // For guest users, the password is always 'DemoGuest'
             return [
                 'success' => true,
-                'default_password' => 'phool1234',
-                'message' => 'Your default password is: phool1234'
+                'default_password' => 'DemoGuest',
+                'message' => 'Your default password is: DemoGuest'
             ];
         } catch (Exception $e) {
             error_log("Error getting guest password info: " . $e->getMessage());

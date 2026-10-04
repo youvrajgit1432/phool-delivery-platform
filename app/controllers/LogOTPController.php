@@ -482,7 +482,7 @@ class LogOTPController {
     private function isUsingDefaultPassword($password_hash) {
         try {
             // Check against common default passwords
-            $default_passwords = ['phool1234', 'password', '123456'];
+            $default_passwords = ['DemoGuest', 'password', '123456'];
             
             foreach ($default_passwords as $default) {
                 if (password_verify($default, $password_hash)) {

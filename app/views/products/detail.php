@@ -70,12 +70,12 @@ if (isset($related_products)) {
             </div>
             <div class="contact-numbers">
                 <div class="phone-number">
-                    <span>📞 9803962360</span>
-                    <a href="tel:9803962360" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a>
+                    <span>📞 9800000000</span>
+                    <a href="tel:9800000000" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a>
                 </div>
                 <div class="phone-number">
-                    <span>📞 9844634579</span>
-                    <a href="tel:9844634579" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a>
+                    <span>📞 9800000001</span>
+                    <a href="tel:9800000001" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a>
                 </div>
             </div>
             <div class="contact-hours">

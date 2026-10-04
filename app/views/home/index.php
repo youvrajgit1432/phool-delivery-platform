@@ -262,8 +262,8 @@ function getCarouselImageUrl($image_path) {
                 <p><?= LanguageHelper::t('contact_orders_inquiries', 'Available for direct orders and inquiries') ?></p>
             </div>
             <div class="contact-numbers">
-                <div class="phone-number"><span>📞 9803962360</span><a href="tel:9803962360" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a></div>
-                <div class="phone-number"><span>📞 9844634579</span><a href="tel:9844634579" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a></div>
+                <div class="phone-number"><span>📞 9800000000</span><a href="tel:9800000000" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a></div>
+                <div class="phone-number"><span>📞 9800000001</span><a href="tel:9800000001" class="call-btn"><?= LanguageHelper::t('call_now', 'Call Now') ?></a></div>
             </div>
             <div class="contact-hours"><p><strong><?= LanguageHelper::t('available_hours', 'Available Hours') ?>:</strong> 8:00 AM - 8:00 PM</p></div>
         </div>
@@ -672,7 +672,7 @@ function getCarouselImageUrl($image_path) {
     </div>
 
     <div class="fixed-whatsapp-btn">
-        <a href="https://wa.me/9779803962360" target="_blank">
+        <a href="https://wa.me/9779800000000" target="_blank">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>

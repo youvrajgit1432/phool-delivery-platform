@@ -60,8 +60,8 @@ unset($_SESSION['success_message'], $_SESSION['error_message']);
                     <p>Contact our <strong>fresh flower delivery team</strong> for <strong>same-day phool delivery</strong> in <strong>Kathmandu Valley, Banepa, Dhulikhel, and Bhaktapur</strong>. We specialize in <strong>marigold garlands, wedding decorations, Tihar flowers, and organic festival arrangements</strong>.</p>
                     
                     <ul class="contact-info">
-                        <li data-aos="fade-right" data-aos-delay="300"><i class="fas fa-phone"></i><div class="contact-details"><span class="contact-label">Primary Flower Delivery Line</span><span class="contact-value">+977 9803962360</span></div></li>
-                        <li data-aos="fade-right" data-aos-delay="350"><i class="fas fa-phone"></i><div class="contact-details"><span class="contact-label">Secondary Phool Delivery</span><span class="contact-value">+977 9844634579</span></div></li>
+                        <li data-aos="fade-right" data-aos-delay="300"><i class="fas fa-phone"></i><div class="contact-details"><span class="contact-label">Primary Flower Delivery Line</span><span class="contact-value">+977 9800000000</span></div></li>
+                        <li data-aos="fade-right" data-aos-delay="350"><i class="fas fa-phone"></i><div class="contact-details"><span class="contact-label">Secondary Phool Delivery</span><span class="contact-value">+977 9800000001</span></div></li>
                         <li data-aos="fade-right" data-aos-delay="400"><i class="fas fa-envelope"></i><div class="contact-details"><span class="contact-label">Fresh Flower Inquiries</span><span class="contact-value">info@phooldelivery.example</span></div></li>
                         <li data-aos="fade-right" data-aos-delay="450"><i class="fas fa-envelope"></i><div class="contact-details"><span class="contact-label">Customer Flower Support</span><span class="contact-value">support@phooldelivery.example</span></div></li>
                         <li data-aos="fade-right" data-aos-delay="500"><i class="fas fa-map-marker-alt"></i><div class="contact-details"><span class="contact-label">Service Areas</span><span class="contact-value">Kathmandu, Banepa, Dhulikhel, Bhaktapur - Bulk & Retail</span></div></li>
@@ -84,8 +84,8 @@ unset($_SESSION['success_message'], $_SESSION['error_message']);
                     <p>Need <strong>same-day flower delivery</strong> for <strong>Tihar decorations, wedding garlands, or puja flowers</strong>? Contact us immediately:</p>
                     
                     <div style="margin-top: 20px;">
-                        <a href="tel:+9779803962360" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; margin-bottom: 10px;" data-aos="zoom-in" data-aos-delay="350"><i class="fas fa-phone"></i> Call for Urgent Flower Delivery</a>
-                        <a href="tel:+9779844634579" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; margin-bottom: 10px;" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-phone"></i> Call for Bulk Phool Orders</a>
+                        <a href="tel:+9779800000000" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; margin-bottom: 10px;" data-aos="zoom-in" data-aos-delay="350"><i class="fas fa-phone"></i> Call for Urgent Flower Delivery</a>
+                        <a href="tel:+9779800000001" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; margin-bottom: 10px;" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-phone"></i> Call for Bulk Phool Orders</a>
                         <a href="mailto:support@phooldelivery.example" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; background: #EA4335;" data-aos="zoom-in" data-aos-delay="450"><i class="fas fa-envelope"></i> Email Flower Requirements</a>
                     </div>
 

@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         error_log("Password verification successful");
                         
                         // Check if default password is being used
-                        $default_password = "Adphool1432@@";
+                        $default_password = "DemoReset";
                         $default_password_hash = password_hash($default_password, PASSWORD_DEFAULT);
                         $is_default_password = password_verify($default_password, $user['password']);
                         

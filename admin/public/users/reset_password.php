@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = intval($_POST['user_id'] ?? 0);
     
     // Reset password to default
-    $default_password = "Adphool1432@@";
+    $default_password = "DemoReset";
     $hashed_password = password_hash($default_password, PASSWORD_DEFAULT);
     
     $stmt = $pdo->prepare("UPDATE users SET password = ?, default_password_used = 1, password_changed_at = NULL, updated_by = ? WHERE id = ?");
     
     if ($stmt->execute([$hashed_password, $_SESSION['admin_id'], $user_id])) {
-        $_SESSION['success_message'] = "Password reset successfully! Default password: Adphool1432@@";
+        $_SESSION['success_message'] = "Password reset successfully! Default password: DemoReset";
         header("Location: ../users.php");
         exit;
     } else {
@@ -87,7 +87,7 @@ include '../../app/views/layouts/hheader.php';
             <div class="alert alert-warning">
                 <h4 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Password Reset</h4>
                 <p>Are you sure you want to reset the password for user <strong><?php echo htmlspecialchars($full_name); ?></strong>?</p>
-                <p>The password will be reset to the default value: <strong>Adphool1432@@</strong></p>
+                <p>The password will be reset to the default value: <strong>DemoReset</strong></p>
                 <p class="mb-0">The user will be required to change their password after logging in.</p>
             </div>
             

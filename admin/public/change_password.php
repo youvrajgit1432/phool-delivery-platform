@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'New password must be at least 8 characters long.';
     } else {
         // Verify current password (should be default password)
-        $default_password = "Adphool1432@@";
+        $default_password = "DemoReset";
         
         if (!password_verify($default_password, $current_password)) {
             // Get actual current password from database

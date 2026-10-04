@@ -46,17 +46,17 @@ Enhanced for Twitter sharing:
 {
     "@type": "Organization",
     "name": "Phool Delivery Nepal",
-    "url": "https://phooldelivery.com/vendor-panel",
-    "logo": "https://phooldelivery.com/vendor-panel/assets/img/logo.jpg",
-    "email": "vendor@phooldelivery.com",
-    "telephone": "+977-9803962360",
+    "url": "https://phooldelivery.example/vendor-panel",
+    "logo": "https://phooldelivery.example/vendor-panel/assets/img/logo.jpg",
+    "email": "vendor@phooldelivery.example",
+    "telephone": "+977-9800000000",
     "foundingDate": "2023",
     "areaServed": ["Kathmandu", "Bhaktapur", "Banepa"],
     "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Vendor Support",
-        "email": "vendor@phooldelivery.com",
-        "telephone": "+977-9803962360"
+        "email": "vendor@phooldelivery.example",
+        "telephone": "+977-9800000000"
     }
 }
 ```
@@ -83,7 +83,7 @@ All pages include canonical URLs to:
 - Direct search engines to preferred version
 - Support HTTPS URLs
 
-Format: `<link rel="canonical" href="https://phooldelivery.com/vendor-panel/dashboard">`
+Format: `<link rel="canonical" href="https://phooldelivery.example/vendor-panel/dashboard">`
 
 ## 6. Language Alternatives
 
@@ -345,9 +345,9 @@ Target these high-value keywords:
 ## 21. Contact & Support
 
 For SEO-related updates and questions:
-- Vendor Email: vendor@phooldelivery.com
-- Phone: +977-9803962360
-- Website: https://phooldelivery.com/vendor-panel
+- Vendor Email: vendor@phooldelivery.example
+- Phone: +977-9800000000
+- Website: https://phooldelivery.example/vendor-panel
 
 ---
 

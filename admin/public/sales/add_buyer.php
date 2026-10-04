@@ -112,7 +112,7 @@ include '../../app/views/layouts/hheader.php';
                         <label for="contact_number1" class="form-label">Primary Contact Number *</label>
                         <input type="text" class="form-control" id="contact_number1" name="contact_number1" 
                                pattern="[0-9]{10}" title="10-digit contact number" required>
-                        <small class="form-text text-muted">10-digit number (e.g., 9841234567)</small>
+                        <small class="form-text text-muted">10-digit number (e.g., 9800000002)</small>
                     </div>
                     
                     <div class="mb-3">

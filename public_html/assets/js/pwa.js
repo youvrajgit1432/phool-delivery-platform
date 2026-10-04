@@ -478,8 +478,8 @@ class PWAHelper {
         const currentUrl = window.location.href;
         
         // If we're on the wrong URL (public_html), redirect to correct one
-        if (currentUrl.includes('phooldelivery.com') && currentUrl.includes('/phool-delivery/public_html')) {
-            const correctUrl = 'https://www.phooldelivery.com/';
+        if (currentUrl.includes('phooldelivery.example') && currentUrl.includes('/phool-delivery/public_html')) {
+            const correctUrl = 'https://www.phooldelivery.example/';
             this.log('Fixing incorrect URL, redirecting to:', correctUrl);
             window.location.replace(correctUrl);
             return;
@@ -487,7 +487,7 @@ class PWAHelper {
         
         // If we're on index listing page, redirect to main site
         if (currentUrl.includes('Index of') || currentUrl.endsWith('/phool-delivery/public_html/')) {
-            const correctUrl = 'https://www.phooldelivery.com/';
+            const correctUrl = 'https://www.phooldelivery.example/';
             this.log('Redirecting from directory listing to:', correctUrl);
             window.location.replace(correctUrl);
             return;
@@ -601,8 +601,8 @@ class PWAHelper {
             }
         } else {
             // On online hosting, redirect to online URL
-            const onlineCorrectUrl = 'https://www.phooldelivery.com/';
-            if (currentUrl !== onlineCorrectUrl && !currentUrl.endsWith('phooldelivery.com/')) {
+            const onlineCorrectUrl = 'https://www.phooldelivery.example/';
+            if (currentUrl !== onlineCorrectUrl && !currentUrl.endsWith('phooldelivery.example/')) {
                 this.log('FORCE REDIRECT after install to ONLINE:', onlineCorrectUrl);
                 window.location.href = onlineCorrectUrl;
             }
@@ -683,7 +683,7 @@ class PWAHelper {
             }
         } else {
             // Fix online URLs in standalone mode
-            const onlineCorrectUrl = 'https://www.phooldelivery.com/';
+            const onlineCorrectUrl = 'https://www.phooldelivery.example/';
             if (currentUrl.includes('/phool-delivery/public_html') || 
                 currentUrl.endsWith('/phool-delivery/public_html')) {
                 this.log('Fixing standalone mode URL on ONLINE from:', currentUrl);

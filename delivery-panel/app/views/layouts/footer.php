@@ -8,7 +8,7 @@
         <!-- Hidden Schema.org structured data -->
         <meta itemprop="name" content="Phool Delivery Nepal">
         <meta itemprop="email" content="support@phooldelivery.example">
-        <meta itemprop="telephone" content="+977-9803962360">
+        <meta itemprop="telephone" content="+977-9800000000">
         <meta itemprop="address" content="Kathmandu, Nepal">
         
         <!-- Organization Schema for SEO -->
@@ -19,7 +19,7 @@
             "name": "Phool Delivery Nepal",
             "url": "<?php echo htmlspecialchars(rtrim(getenv('APP_URL') ?: 'http://localhost/phool-delivery-platform/delivery-panel', '/')); ?>",
             "email": "support@phooldelivery.example",
-            "telephone": "+977-9803962360",
+            "telephone": "+977-9800000000",
             "foundingDate": "2023",
             "founder": {
                 "@type": "Person",
@@ -40,7 +40,7 @@
         <!-- Hidden Schema.org structured data -->
         <meta itemprop="name" content="Phool Delivery Nepal">
         <meta itemprop="email" content="support@phooldelivery.example">
-        <meta itemprop="telephone" content="+977-9803962360">
+        <meta itemprop="telephone" content="+977-9800000000">
         <meta itemprop="address" content="Kathmandu, Nepal">
         
         <!-- Organization Schema for SEO -->
@@ -51,7 +51,7 @@
             "name": "Phool Delivery Nepal",
             "url": "<?php echo htmlspecialchars(rtrim(getenv('APP_URL') ?: 'http://localhost/phool-delivery-platform/delivery-panel', '/')); ?>",
             "email": "support@phooldelivery.example",
-            "telephone": "+977-9803962360",
+            "telephone": "+977-9800000000",
             "foundingDate": "2023",
             "founder": {
                 "@type": "Person",
@@ -321,7 +321,7 @@
                     </p>
                     <p>
                         <i class="fas fa-phone"></i>
-                        <a href="tel:+9779803962360" style="color: #ccc; text-decoration: none;">+977 9803962360</a>
+                        <a href="tel:+9779800000000" style="color: #ccc; text-decoration: none;">+977 9800000000</a>
                     </p>
                     <p>
                         <i class="fas fa-map-marker-alt"></i>

@@ -177,7 +177,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
         "name": "Phool Delivery Nepal",
         "description": "Fresh flower delivery service in Banepa, Bhaktapur and Kathmandu. Specializing in organic Sayapatri, Marigold, and Genda Phool for festivals and occasions.",
         "url": "<?php echo $base_url; ?>",
-        "telephone": "+977-9803962360",
+        "telephone": "+977-9800000000",
         "logo": "<?php echo $logo_url; ?>",
         "image": "<?php echo $logo_url; ?>",
         "address": {
@@ -288,7 +288,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
                 <span class="change-location" id="changeLocationBtn">Change Location</span>
             </div>
             <div class="contact-info">
-                <span class="phone-icon"><i class="fas fa-phone action-icon"></i></span> Need help? Call: 9803962360
+                <span class="phone-icon"><i class="fas fa-phone action-icon"></i></span> Need help? Call: 9800000000
             </div>
         </div>
     </div>

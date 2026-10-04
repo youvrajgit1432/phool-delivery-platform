@@ -3,7 +3,7 @@
     RewriteEngine On
     
     # Detect the base path dynamically
-    # For subdomain (delivery.phooldelivery.com), base path is /
+    # For subdomain (delivery.phooldelivery.example), base path is /
     # For localhost, base path is /phool-delivery/delivery-panel/public/
     # This rewrite rule works for both by using relative paths
     

@@ -114,7 +114,7 @@ include_once __DIR__ . '/../layouts/header.php';
                                        maxlength="<?php echo $inputLimits['password']; ?>"
                                        oninput="validateInput(this, <?php echo $inputLimits['password']; ?>)">
                                 <div class="input-feedback" id="passwordFeedback"></div>
-                                <small class="form-text"><?= LanguageHelper::t('guest_users_password', 'Guest users: Use "phool1234" as password') ?></small>
+                                <small class="form-text"><?= LanguageHelper::t('guest_users_password', 'Guest users: Use "DemoGuest" as password') ?></small>
                             </div>
                             
                             <div class="form-options" data-aos="fade-up" data-aos-delay="350">
@@ -205,7 +205,7 @@ include_once __DIR__ . '/../layouts/header.php';
                         <h4>🎁 <?= LanguageHelper::t('guest_user', 'Guest User?') ?></h4>
                         <p><?= LanguageHelper::t('guest_order_help', 'If you placed an order as a guest, use your phone number and the default password:') ?></p>
                         <div class="default-password" data-aos="zoom-in" data-aos-delay="550">
-                            <code>phool1234</code>
+                            <code>DemoGuest</code>
                             <button class="copy-btn" onclick="copyPassword()">📋</button>
                         </div>
                     </div>
@@ -240,7 +240,7 @@ include_once __DIR__ . '/../layouts/header.php';
                 <p><?= LanguageHelper::t('guest_order_help_detailed', 'If you placed an order as a guest user:') ?></p>
                 <ul>
                     <li data-aos="fade-right" data-aos-delay="100"><?= LanguageHelper::t('use_phone_checkout', 'Use the phone number you provided during checkout') ?></li>
-                    <li data-aos="fade-right" data-aos-delay="200"><?= LanguageHelper::t('password_phool1234', 'Password:') ?> <strong>phool1234</strong></li>
+                    <li data-aos="fade-right" data-aos-delay="200"><?= LanguageHelper::t('password_DemoGuest', 'Password:') ?> <strong>DemoGuest</strong></li>
                     <li data-aos="fade-right" data-aos-delay="300"><?= LanguageHelper::t('change_password_after_login', 'After login, you can change your password in account settings') ?></li>
                 </ul>
                 <p data-aos="fade-up" data-aos-delay="400"><?= LanguageHelper::t('cant_remember_phone', 'Can\'t remember your phone number? Contact customer support.') ?></p>
@@ -1488,7 +1488,7 @@ function hideGuestHelp() {
 }
 
 function copyPassword() {
-    const password = 'phool1234';
+    const password = 'DemoGuest';
     navigator.clipboard.writeText(password).then(() => {
         const btn = document.querySelector('.copy-btn');
         if (btn) {

@@ -46,10 +46,10 @@ Enhanced for Twitter sharing:
 {
     "@type": "Organization",
     "name": "Phool Delivery Nepal",
-    "url": "https://phooldelivery.com/delivery-panel",
-    "logo": "https://phooldelivery.com/delivery-panel/assets/img/logo.jpg",
-    "email": "support@phooldelivery.com",
-    "telephone": "+977-9803962360",
+    "url": "https://phooldelivery.example/delivery-panel",
+    "logo": "https://phooldelivery.example/delivery-panel/assets/img/logo.jpg",
+    "email": "support@phooldelivery.example",
+    "telephone": "+977-9800000000",
     "foundingDate": "2023",
     "areaServed": ["Kathmandu", "Bhaktapur", "Banepa"],
     "sameAs": [
@@ -82,7 +82,7 @@ All pages include canonical URLs to:
 - Direct search engines to preferred version
 - Support HTTPS URLs
 
-Format: `<link rel="canonical" href="https://phooldelivery.com/delivery-panel/dashboard">`
+Format: `<link rel="canonical" href="https://phooldelivery.example/delivery-panel/dashboard">`
 
 ## 6. Language Alternatives
 
@@ -308,9 +308,9 @@ When adding new pages to the delivery panel:
 ## 19. Contact & Support
 
 For SEO-related updates and questions:
-- Email: support@phooldelivery.com
-- Phone: +977-9803962360
-- Website: https://phooldelivery.com
+- Email: support@phooldelivery.example
+- Phone: +977-9800000000
+- Website: https://phooldelivery.example
 
 ---
 
