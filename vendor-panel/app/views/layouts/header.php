@@ -31,8 +31,8 @@
     <meta property="og:url" content="<?php echo htmlspecialchars($current_page, ENT_QUOTES, 'UTF-8'); ?>">
     <meta property="og:title" content="<?php echo htmlspecialchars($page_title ?? 'Phool Delivery - Vendor Management Dashboard', ENT_QUOTES, 'UTF-8'); ?>">
     <meta property="og:description" content="<?php echo htmlspecialchars($meta_description ?? 'Professional vendor management system for flower sellers. Manage products, track orders, and grow your business.', ENT_QUOTES, 'UTF-8'); ?>">
-    <meta property="og:image" content="<?php echo $base_url; ?>/assets/img/logo.jpg">
-    <meta property="og:image:secure_url" content="<?php echo str_replace('http://', 'https://', $base_url); ?>/assets/img/logo.jpg">
+    <meta property="og:image" content="<?php echo htmlspecialchars(vendor_asset_url('/img/logo.jpg'), ENT_QUOTES, 'UTF-8'); ?>">
+    <meta property="og:image:secure_url" content="<?php echo htmlspecialchars(str_replace('http://', 'https://', vendor_asset_url('/img/logo.jpg')), ENT_QUOTES, 'UTF-8'); ?>">
     <meta property="og:image:width" content="500">
     <meta property="og:image:height" content="500">
     <meta property="og:image:alt" content="Phool Delivery Vendor Panel">
@@ -46,15 +46,15 @@
     <meta name="twitter:url" content="<?php echo htmlspecialchars($current_page, ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="twitter:title" content="<?php echo htmlspecialchars($page_title ?? 'Phool Delivery - Vendor Panel', ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="twitter:description" content="<?php echo htmlspecialchars($meta_description ?? 'Comprehensive vendor management platform for flower sellers.', ENT_QUOTES, 'UTF-8'); ?>">
-    <meta name="twitter:image" content="<?php echo $base_url; ?>/assets/img/logo.jpg">
+    <meta name="twitter:image" content="<?php echo htmlspecialchars(vendor_asset_url('/img/logo.jpg'), ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="twitter:image:alt" content="Phool Delivery">
     
     <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/x-icon" href="<?php echo $base_url; ?>/assets/img/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $base_url; ?>/assets/img/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $base_url; ?>/assets/img/favicon.png">
-    <link rel="apple-touch-icon" href="<?php echo $base_url; ?>/assets/img/apple-touch-icon.png">
-    <link rel="manifest" href="<?php echo $base_url; ?>/manifest.webmanifest">
+    <link rel="icon" type="image/x-icon" href="<?php echo htmlspecialchars(vendor_asset_url('/img/favicon.png'), ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo htmlspecialchars(vendor_asset_url('/img/favicon.png'), ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo htmlspecialchars(vendor_asset_url('/img/favicon.png'), ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo htmlspecialchars(vendor_asset_url('/img/apple-touch-icon.png'), ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="manifest" href="<?php echo htmlspecialchars(rtrim(getVendorPanelUrl(), '/') . '/public/manifest.webmanifest', ENT_QUOTES, 'UTF-8'); ?>">
     
     <!-- SEO - Geographic Meta Tags -->
     <meta name="geo.region" content="NP-BA">
@@ -75,7 +75,7 @@
         "@id": "<?php echo $base_url; ?>/#organization",
         "name": "Phool Delivery Nepal",
         "url": "<?php echo $base_url; ?>",
-        "logo": "<?php echo $base_url; ?>/assets/img/logo.jpg",
+        "logo": "<?php echo htmlspecialchars(vendor_asset_url('/img/logo.jpg'), ENT_QUOTES, 'UTF-8'); ?>",
         "description": "Professional flower delivery and vendor management platform in Nepal",
         "contactPoint": {
             "@type": "ContactPoint",
@@ -149,7 +149,7 @@
     // Preload critical resources for performance
     if (!empty($base_url)): ?>
     <link rel="preload" href="<?php echo htmlspecialchars(vendor_asset_url('/css/vendor.css')); ?>" as="style">
-    <link rel="preload" href="<?php echo $base_url; ?>/assets/img/logo.jpg" as="image">
+    <link rel="preload" href="<?php echo htmlspecialchars(vendor_asset_url('/img/logo.jpg'), ENT_QUOTES, 'UTF-8'); ?>" as="image">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://maps.googleapis.com">
     <?php endif; ?>

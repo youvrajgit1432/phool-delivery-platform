@@ -208,8 +208,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Select2 CSS for searchable dropdowns -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo getenv('GOOGLE_MAPS_API_KEY') ?? 'YOUR_API_KEY'; ?>"></script>
+    <!-- Google Maps (only loaded when an API key is configured) -->
+    <?php $googleMapsKey = getenv('GOOGLE_MAPS_API_KEY'); ?>
+    <?php if (!empty($googleMapsKey)): ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo htmlspecialchars($googleMapsKey, ENT_QUOTES, 'UTF-8'); ?>"></script>
+    <?php endif; ?>
     
     <!-- Custom Styles -->
     <?php require_once dirname(__FILE__, 3) . '/helpers/url.php'; ?>

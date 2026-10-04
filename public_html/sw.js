@@ -1,7 +1,7 @@
 // sw.js - Enhanced Service Worker with Firebase FCM Integration & Auto-Registration Support
-const CACHE_NAME = 'phool-delivery-v4.3.0';
-const BASE_PATH = self.location.pathname.includes('/phool-delivery/public_html') 
-    ? '/phool-delivery/public_html' 
+const CACHE_NAME = 'phool-delivery-platform-v4.4.0';
+const BASE_PATH = self.location.pathname.includes('/phool-delivery-platform/public_html')
+    ? '/phool-delivery-platform/public_html'
     : '';
 
 // Firebase Configuration
@@ -23,14 +23,14 @@ const messaging = firebase.messaging();
 // Background message handler (when app is in background)
 messaging.onBackgroundMessage((payload) => {
     console.log('[SW] Received background message:', payload);
-    
+
     const notificationTitle = payload.notification?.title || 'Phool Delivery';
     const notificationOptions = {
         body: payload.notification?.body || 'You have a new notification',
         icon: payload.notification?.icon || BASE_PATH + '/assets/img/favicon1.jpg',
         badge: BASE_PATH + '/assets/img/favicon1.jpg',
         data: payload.data || {},
-        tag: payload.data?.tag || 'phool-delivery',
+        tag: payload.data?.tag || 'phool-delivery-platform',
         requireInteraction: true,
         vibrate: [200, 100, 200],
         actions: [
@@ -39,7 +39,7 @@ messaging.onBackgroundMessage((payload) => {
                 title: 'View Details'
             },
             {
-                action: 'dismiss', 
+                action: 'dismiss',
                 title: 'Dismiss'
             }
         ]
@@ -51,7 +51,7 @@ messaging.onBackgroundMessage((payload) => {
 // Enhanced Push Event Handler
 self.addEventListener('push', function(event) {
     console.log('[SW] Push event received:', event);
-    
+
     let data = {};
     try {
         if (event.data) {
@@ -79,7 +79,7 @@ self.addEventListener('push', function(event) {
         badge: BASE_PATH + '/assets/img/favicon1.jpg',
         image: notificationData.image,
         data: notificationData.data || notificationData,
-        tag: notificationData.tag || 'phool-delivery',
+        tag: notificationData.tag || 'phool-delivery-platform',
         requireInteraction: true,
         vibrate: [200, 100, 200],
         timestamp: notificationData.timestamp || Date.now(),
@@ -122,7 +122,7 @@ self.addEventListener('push', function(event) {
 // Enhanced Notification Click Handler
 self.addEventListener('notificationclick', function(event) {
     console.log('[SW] Notification click received:', event);
-    
+
     event.notification.close();
 
     const notificationData = event.notification.data || {};
@@ -162,12 +162,12 @@ self.addEventListener('notificationclick', function(event) {
                     const client = windowClients[i];
                     const clientUrl = new URL(client.url);
                     const targetUrlObj = new URL(targetUrl, self.location.origin);
-                    
+
                     if (clientUrl.pathname === targetUrlObj.pathname && 'focus' in client) {
                         return client.focus();
                     }
                 }
-                
+
                 // If no existing window, open a new one
                 if (clients.openWindow) {
                     return clients.openWindow(targetUrl);
@@ -179,7 +179,7 @@ self.addEventListener('notificationclick', function(event) {
 // Enhanced Push Subscription Management
 self.addEventListener('pushsubscriptionchange', function(event) {
     console.log('[SW] Push subscription changed:', event);
-    
+
     event.waitUntil(
         self.registration.pushManager.subscribe(event.options)
             .then(function(subscription) {
@@ -204,7 +204,7 @@ self.addEventListener('pushsubscriptionchange', function(event) {
 // Install event - cache core assets
 self.addEventListener('install', (event) => {
   console.log('[SW] Installing with base path:', BASE_PATH);
-  
+
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
@@ -223,7 +223,7 @@ self.addEventListener('install', (event) => {
           BASE_PATH + '/assets/img/favicon1.jpg',
           BASE_PATH + '/manifest.webmanifest'
         ].filter(url => url && url !== BASE_PATH + '/undefined' && !url.includes('undefined'));
-        
+
         console.log('[SW] Caching app shell', criticalAssets);
         return cache.addAll(criticalAssets).catch(error => {
           console.log('[SW] Some files failed to cache:', error);
@@ -240,7 +240,7 @@ self.addEventListener('install', (event) => {
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   console.log('[SW] Activating...');
-  
+
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -262,16 +262,16 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
-  
+
   // Skip caching for logout and authentication routes
-  if (event.request.url.includes('/logout') || 
+  if (event.request.url.includes('/logout') ||
       event.request.url.includes('/login') ||
       event.request.url.includes('/verify-otp')) {
     return fetch(event.request);
   }
-  
+
   // Skip non-GET requests and browser extensions
-  if (request.method !== 'GET' || 
+  if (request.method !== 'GET' ||
       url.protocol === 'chrome-extension:' ||
       url.hostname.includes('browser-sync') ||
       url.hostname.includes('fcm.googleapis.com') ||
@@ -280,12 +280,12 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Don't cache dynamic pages and API endpoints
-  if (url.pathname.includes('/cart/') || 
-      url.pathname.includes('/api/') || 
+  if (url.pathname.includes('/cart/') ||
+      url.pathname.includes('/api/') ||
       url.pathname.includes('/admin/') ||
       url.search.includes('nocache=true') ||
       request.headers.get('X-Requested-With') === 'XMLHttpRequest') {
-    
+
     event.respondWith(
       fetch(request)
         .then(response => {
@@ -293,9 +293,9 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(error => {
           if (url.pathname.includes('/api/')) {
-            return new Response(JSON.stringify({ 
+            return new Response(JSON.stringify({
               error: 'Network unavailable',
-              offline: true 
+              offline: true
             }), {
               status: 408,
               headers: { 'Content-Type': 'application/json' }
@@ -343,13 +343,13 @@ async function handleImageRequest(request) {
       BASE_PATH + '/assets/img/products/placeholder.jpg',
       '/assets/img/products/placeholder.jpg'
     ];
-    
+
     for (const path of placeholderPaths) {
       const placeholder = await caches.match(path);
       if (placeholder) return placeholder;
     }
-    
-    return new Response('Image not available', { 
+
+    return new Response('Image not available', {
       status: 404,
       headers: { 'Content-Type': 'text/plain' }
     });
@@ -370,7 +370,7 @@ async function handleAssetRequest(request) {
     }
     return networkResponse;
   } catch (error) {
-    return new Response('Asset not available', { 
+    return new Response('Asset not available', {
       status: 404,
       headers: { 'Content-Type': 'text/plain' }
     });
@@ -379,28 +379,33 @@ async function handleAssetRequest(request) {
 
 async function handleHtmlRequest(request) {
   try {
-    const networkResponse = await fetch(request);
+    // Navigation requests carry redirect:'manual'. Re-issuing them with that
+    // mode turns any server redirect (e.g. to the login page when the session
+    // has expired) into an opaque response, which we would wrongly treat as a
+    // network failure and replace with the offline page. Follow redirects here
+    // so protected pages correctly fall through to the login screen.
+    const networkResponse = await fetch(request, { redirect: 'follow' });
     if (networkResponse.ok) {
       const cache = await caches.open(CACHE_NAME);
       cache.put(request, networkResponse.clone());
       return networkResponse;
     }
-    throw new Error('Network response not ok');
+    throw new Error('Network response not ok: status=' + networkResponse.status);
   } catch (error) {
     const cachedResponse = await caches.match(request);
     if (cachedResponse) return cachedResponse;
-    
+
     const fallbackOptions = [
       BASE_PATH + '/offline.html',
       '/offline.html',
       BASE_PATH + '/index.php'
     ];
-    
+
     for (const fallback of fallbackOptions) {
       const fallbackResponse = await caches.match(fallback);
       if (fallbackResponse) return fallbackResponse;
     }
-    
+
     return new Response('You are offline', {
       status: 408,
       headers: { 'Content-Type': 'text/html' }
@@ -422,7 +427,7 @@ async function handleDefaultRequest(request) {
     }
     return networkResponse;
   } catch (error) {
-    return new Response('Resource not available', { 
+    return new Response('Resource not available', {
       status: 404,
       headers: { 'Content-Type': 'text/plain' }
     });
@@ -444,23 +449,23 @@ async function updateCache(request) {
 // Enhanced message handling with auto-registration support
 self.addEventListener('message', (event) => {
     console.log('[SW] Received message', event.data);
-    
+
     if (event.data && event.data.type === 'SKIP_WAITING') {
         self.skipWaiting();
     }
-    
+
     if (event.data && event.data.type === 'GET_VERSION') {
-        event.ports[0].postMessage({ 
+        event.ports[0].postMessage({
             version: CACHE_NAME,
             basePath: BASE_PATH
         });
     }
-  
+
     // Handle automatic push subscription registration
     if (event.data && event.data.type === 'AUTO_REGISTER_PUSH') {
         event.waitUntil(handleAutomaticPushRegistration(event.data));
     }
-  
+
     // Enhanced: Handle logout by clearing all caches
     if (event.data && event.data.type === 'LOGOUT') {
         event.waitUntil(
@@ -473,7 +478,7 @@ self.addEventListener('message', (event) => {
             })
         );
     }
-  
+
     // Handle auto-enable notifications
     if (event.data && event.data.type === 'AUTO_ENABLE_NOTIFICATIONS') {
         event.waitUntil(handleAutoEnableNotifications(event.data));
@@ -484,7 +489,7 @@ self.addEventListener('message', (event) => {
 async function handleAutoEnableNotifications(data) {
     try {
         console.log('[SW] Auto-enabling notifications');
-        
+
         // Notify all clients that notifications are being auto-enabled
         const clients = await self.clients.matchAll();
         clients.forEach(client => {
@@ -502,11 +507,11 @@ async function handleAutoEnableNotifications(data) {
 async function handleAutomaticPushRegistration(data) {
   try {
     console.log('[SW] Starting automatic push registration');
-    
+
     // Get VAPID public key from server
     const vapidResponse = await fetch(BASE_PATH + '/api/notifications/vapid-key');
     const vapidData = await vapidResponse.json();
-    
+
     if (!vapidData.success || !vapidData.publicKey) {
       throw new Error('Failed to get VAPID key');
     }
@@ -544,7 +549,7 @@ async function handleAutomaticPushRegistration(data) {
     });
 
     const result = await registerResponse.json();
-    
+
     if (result.success) {
       console.log('[SW] Automatic push registration successful');
       // Notify all clients
@@ -590,7 +595,7 @@ function urlBase64ToUint8Array(base64String) {
 // Log notification delivery
 async function logNotificationDelivery(notificationId, deviceId) {
   if (!notificationId || !deviceId) return;
-  
+
   try {
     await fetch(BASE_PATH + '/api/notifications/log-delivery', {
       method: 'POST',

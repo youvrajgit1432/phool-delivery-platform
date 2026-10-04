@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $mail->SMTPSecure = ($smtp_encryption === 'ssl') ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
                             $mail->Port = $smtp_port;
                             $mail->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
-                            $fromAddress = !empty($smtp_username) ? $smtp_username : 'no-reply@phool-delivery.local';
+                            $fromAddress = !empty($smtp_username) ? $smtp_username : 'no-reply@phool-delivery-platform.local';
                             $mail->setFrom($fromAddress, 'Phool Delivery');
                             $mail->addAddress($vendorRow['email'], $vendorRow['store_name']);
                             $mail->isHTML(true);
@@ -632,7 +632,7 @@ if (!$current_order) {
             <div class="card-body">
                 <div class="alert alert-success">
                     <i class="fas fa-check-circle me-2"></i>
-                    Customer verified on <?php echo date('M d, Y', strtotime($order_customer['verified_at'])); ?>
+                    Customer verified on <?php echo !empty($order_customer['verified_at']) ? date('M d, Y', strtotime($order_customer['verified_at'])) : 'N/A'; ?>
                     <?php if (!empty($order_customer['verification_method'])): ?>
                     via <?php echo ucfirst(str_replace('_', ' ', $order_customer['verification_method'])); ?>
                     <?php endif; ?>

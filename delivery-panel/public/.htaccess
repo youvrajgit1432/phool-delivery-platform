@@ -4,7 +4,7 @@
     
     # Detect the base path dynamically
     # For subdomain (delivery.phooldelivery.example), base path is /
-    # For localhost, base path is /phool-delivery/delivery-panel/public/
+    # For localhost, base path is /phool-delivery-platform/delivery-panel/public/
     # This rewrite rule works for both by using relative paths
     
     # Don't rewrite actual files or directories

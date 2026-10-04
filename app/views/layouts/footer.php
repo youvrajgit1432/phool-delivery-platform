@@ -483,13 +483,15 @@ window.triggerMessageUpdate = triggerMessageUpdate;
         });
     </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-77373YX1EB"></script>
+<?php $gaId = getenv('GA_MEASUREMENT_ID') ?: ''; if ($gaId !== ''): ?>
+<!-- Google Analytics (rendered only when GA_MEASUREMENT_ID is configured) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= htmlspecialchars($gaId, ENT_QUOTES) ?>"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-77373YX1EB');
+  gtag('config', '<?= htmlspecialchars($gaId, ENT_QUOTES) ?>');
 </script>
+<?php endif; ?>
 </body>
 </html>

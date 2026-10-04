@@ -54,7 +54,7 @@ function addToCart(id, name, price, quantity = 1) {
     debugLog("Adding to cart:", id, name, price, quantity);
     
     // Determine the correct cart endpoint based on environment
-    const cartEndpoint = window.isOnline ? '/cart/add' : '/phool-delivery/public_html/cart/add';
+    const cartEndpoint = window.isOnline ? '/cart/add' : '/phool-delivery-platform/public_html/cart/add';
     
     fetch(cartEndpoint, {
         method: 'POST',
@@ -144,7 +144,7 @@ function getCart() {
 
 function clearCart() {
     // Determine the correct cart endpoint based on environment
-    const cartEndpoint = window.isOnline ? '/cart/clear' : '/phool-delivery/public_html/cart/clear';
+    const cartEndpoint = window.isOnline ? '/cart/clear' : '/phool-delivery-platform/public_html/cart/clear';
     
     fetch(cartEndpoint, {
         method: 'POST'
@@ -167,7 +167,7 @@ function clearCart() {
 
 function removeFromCart(productId) {
     // Determine the correct cart endpoint based on environment
-    const cartEndpoint = window.isOnline ? '/cart/remove' : '/phool-delivery/public_html/cart/remove';
+    const cartEndpoint = window.isOnline ? '/cart/remove' : '/phool-delivery-platform/public_html/cart/remove';
     
     fetch(cartEndpoint, {
         method: 'POST',

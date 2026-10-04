@@ -6,7 +6,7 @@
 # RewriteEngine On
 
 # Set the base directory (adjust if needed)
-# RewriteBase /phool-delivery/admin/
+# RewriteBase /phool-delivery-platform/admin/
 
 # Security headers
 # <IfModule mod_headers.c>

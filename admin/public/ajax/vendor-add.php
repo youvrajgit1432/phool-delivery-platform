@@ -228,7 +228,7 @@ try {
             $smtpStmt = $db->prepare("SELECT setting_value FROM system_settings WHERE setting_key = 'smtp_username' LIMIT 1");
             $smtpStmt->execute();
             $smtpRow = $smtpStmt->fetch(PDO::FETCH_ASSOC);
-            $fromAddress = !empty($smtpRow['setting_value']) ? $smtpRow['setting_value'] : 'phooldelivery@phool-delivery.local';
+            $fromAddress = !empty($smtpRow['setting_value']) ? $smtpRow['setting_value'] : 'phooldelivery@phool-delivery-platform.local';
             $mail->setFrom($fromAddress, 'Phool Delivery');
             $mail->addAddress($email, trim($first_name . ' ' . $last_name));
             $mail->isHTML(true);

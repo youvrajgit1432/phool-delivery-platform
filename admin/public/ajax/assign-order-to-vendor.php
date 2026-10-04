@@ -269,7 +269,7 @@ try {
                     $mail->SMTPSecure = ($smtp_encryption === 'ssl') ? PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = $smtp_port;
                     $mail->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
-                    $fromAddress = !empty($smtp_username) ? $smtp_username : 'no-reply@phool-delivery.local';
+                    $fromAddress = !empty($smtp_username) ? $smtp_username : 'no-reply@phool-delivery-platform.local';
                     $mail->setFrom($fromAddress, 'Phool Delivery');
                     $mail->addAddress($vendorRow['email'], $vendorRow['store_name']);
                     $mail->isHTML(true);

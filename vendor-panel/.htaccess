@@ -1,13 +1,13 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /phool-delivery/vendor-panel/
+    RewriteBase /phool-delivery-platform/vendor-panel/
     
     # Don't rewrite actual files or directories
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     
     # Don't rewrite if already in public directory
-    RewriteCond %{REQUEST_URI} !^/phool-delivery/vendor-panel/public/
+    RewriteCond %{REQUEST_URI} !^/phool-delivery-platform/vendor-panel/public/
     
     # Route all requests to public/index.php (the child .htaccess will handle it from there)
     RewriteRule ^(.*)$ public/index.php?__url=$1 [QSA,L]

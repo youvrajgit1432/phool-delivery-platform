@@ -18,7 +18,7 @@ class EnvironmentHelper {
             '::1',
             '.local',
             '.test',
-            'phool-delivery.test'
+            'phool-delivery-platform.test'
         ];
         
         foreach ($localhost_patterns as $pattern) {

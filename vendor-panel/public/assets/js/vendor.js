@@ -83,7 +83,7 @@ function formatDate(dateString) {
  */
 function deleteItem(id, itemName = 'item') {
     if (confirm(`Are you sure you want to delete this ${itemName}?`)) {
-        makeRequest(`/phool-delivery/vendor-panel/public/ajax/product-delete.php`, 'POST', { id })
+        makeRequest(`/phool-delivery-platform/vendor-panel/public/ajax/product-delete.php`, 'POST', { id })
             .then(result => {
                 if (result && result.success) {
                     showAlert('Item deleted successfully', 'success');

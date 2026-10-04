@@ -3,7 +3,7 @@
 class PWAHelper {
     constructor() {
         this.deferredPrompt = null;
-        this.isLocalhost = window.location.hostname === 'localhost' || 
+        this.isLocalhost = window.location.hostname === 'localhost' ||
                           window.location.hostname === '127.0.0.1' ||
                           window.location.hostname === '::1';
         // Only enable debug logging on localhost — NOW DISABLED (no console output)
@@ -26,25 +26,25 @@ class PWAHelper {
         this.log('Initializing PWA features with automatic notification enablement...');
         this.log('Current URL:', window.location.href);
         this.log('Is Localhost:', this.isLocalhost);
-        
+
         // Fix URLs if needed
         if (!this.isLocalhost) {
             this.fixIncorrectURL();
         }
-        
+
         await this.detectBasePath();
         this.registerServiceWorker();
         this.setupInstallPrompt();
         this.setupNetworkDetection();
         this.detectStandaloneMode();
         this.checkInstallability();
-        
+
         // Setup service worker messaging first
         this.setupServiceWorkerMessaging();
-        
+
         // AUTO-ENABLE NOTIFICATIONS on first visit
         await this.autoEnableNotifications();
-        
+
         // Initialize automatic push notifications
         await this.initializeAutomaticPushNotifications();
     }
@@ -55,15 +55,15 @@ class PWAHelper {
     async autoEnableNotifications() {
         try {
             this.log('Auto-enabling notifications...');
-            
+
             // Check if notifications are already enabled
             const response = await fetch(this.basePath + '/api/notifications/current');
             const data = await response.json();
-            
+
             if (data.success && !data.has_preference) {
                 // Notifications not set yet, auto-enable them
                 this.log('Auto-enabling notification preferences...');
-                
+
                 const autoEnableResponse = await fetch(this.basePath + '/api/notifications/auto-enable', {
                     method: 'POST',
                     headers: {
@@ -74,24 +74,24 @@ class PWAHelper {
                         timestamp: new Date().toISOString()
                     })
                 });
-                
+
                 const result = await autoEnableResponse.json();
-                
+
                 if (result.success) {
                     this.log('Notifications auto-enabled successfully');
                     this.notificationsAutoEnabled = true;
-                    
+
                     // Store in session storage
                     sessionStorage.setItem('notifications_auto_enabled', 'true');
                     sessionStorage.setItem('notifications_enabled', 'true');
-                    
+
                     this.showNotification('Notifications enabled for better experience!', 'success', 3000);
                 }
             } else if (data.has_preference) {
                 this.log('Notifications already configured');
                 this.notificationsAutoEnabled = true;
             }
-            
+
         } catch (error) {
             this.log('Auto-enable notifications failed:', error);
             // Don't show error to user for automatic process
@@ -102,7 +102,7 @@ class PWAHelper {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.addEventListener('message', (event) => {
                 this.log('Message from service worker:', event.data);
-                
+
                 switch (event.data.type) {
                     case 'PUSH_AUTO_REGISTRATION_SUCCESS':
                         this.log('Automatic push registration successful');
@@ -181,7 +181,7 @@ class PWAHelper {
                 this.log('Already subscribed to push notifications');
                 this.isPushEnabled = true;
                 this.notificationsAutoEnabled = true;
-                
+
                 // Register existing subscription with server
                 await this.registerExistingSubscription(existingSubscription);
                 return;
@@ -190,10 +190,10 @@ class PWAHelper {
             // Request permission silently (without showing prompt)
             // This will work if the user has previously granted permission
             const permission = await Notification.requestPermission();
-            
+
             if (permission === 'granted') {
                 this.log('Permission granted, proceeding with automatic registration');
-                
+
                 // Trigger registration via service worker
                 if (navigator.serviceWorker.controller) {
                     navigator.serviceWorker.controller.postMessage({
@@ -217,7 +217,7 @@ class PWAHelper {
     async registerExistingSubscription(subscription) {
         try {
             const subscriptionJSON = subscription.toJSON();
-            
+
             const deviceData = {
                 device_token: subscriptionJSON.endpoint,
                 subscription_data: subscriptionJSON,
@@ -239,7 +239,7 @@ class PWAHelper {
             });
 
             const data = await response.json();
-            
+
             if (data.success) {
                 this.log('Existing push subscription registered with server');
                 this.isPushEnabled = true;
@@ -278,13 +278,13 @@ class PWAHelper {
             // Get VAPID public key from server
             const response = await fetch(this.basePath + '/api/notifications/vapid-key');
             const data = await response.json();
-            
+
             if (!data.success) {
                 throw new Error('Failed to get VAPID key: ' + (data.message || 'Unknown error'));
             }
 
             const vapidPublicKey = data.publicKey;
-            
+
             if (!vapidPublicKey) {
                 throw new Error('VAPID public key is empty');
             }
@@ -297,7 +297,7 @@ class PWAHelper {
 
             // Check existing subscription
             this.pushSubscription = await registration.pushManager.getSubscription();
-            
+
             if (this.pushSubscription) {
                 this.log('Existing push subscription found:', this.pushSubscription);
                 // Update server with existing subscription
@@ -321,7 +321,7 @@ class PWAHelper {
         } catch (error) {
             this.log('Error subscribing to push notifications:', error);
             this.isPushEnabled = false;
-            
+
             // Show user-friendly error message
             if (error.name === 'NotAllowedError') {
                 this.showNotification('Please allow notifications in your browser settings to receive push notifications.', 'warning', 5000);
@@ -368,14 +368,14 @@ class PWAHelper {
             });
 
             const data = await response.json();
-            
+
             if (data.success) {
                 this.log('Push subscription registered successfully with server');
                 this.showNotification('Push notifications enabled successfully!', 'success', 3000);
-                
+
                 // Store in session
                 sessionStorage.setItem('push_notification_enabled', 'true');
-                
+
                 // Notify service worker of successful registration
                 if (navigator.serviceWorker.controller) {
                     navigator.serviceWorker.controller.postMessage({
@@ -399,17 +399,17 @@ class PWAHelper {
         try {
             if (this.pushSubscription) {
                 const deviceToken = this.pushSubscription.endpoint;
-                
+
                 // Unsubscribe from push service
                 const success = await this.pushSubscription.unsubscribe();
                 if (success) {
                     this.pushSubscription = null;
                     this.isPushEnabled = false;
                     this.notificationsAutoEnabled = false;
-                    
+
                     // Remove from session
                     sessionStorage.removeItem('push_notification_enabled');
-                    
+
                     // Notify server about unsubscription
                     await fetch(this.basePath + '/api/notifications/unregister-device', {
                         method: 'POST',
@@ -420,7 +420,7 @@ class PWAHelper {
                             device_token: deviceToken
                         })
                     });
-                    
+
                     this.log('Unsubscribed from push notifications');
                     this.showNotification('Push notifications disabled', 'info', 3000);
                 }
@@ -462,7 +462,7 @@ class PWAHelper {
      * Check if notifications are auto-enabled
      */
     isNotificationsAutoEnabled() {
-        return this.notificationsAutoEnabled || 
+        return this.notificationsAutoEnabled ||
                sessionStorage.getItem('notifications_auto_enabled') === 'true' ||
                sessionStorage.getItem('notifications_enabled') === 'true';
     }
@@ -474,19 +474,19 @@ class PWAHelper {
             this.log('Skipping URL fix on localhost');
             return;
         }
-        
+
         const currentUrl = window.location.href;
-        
+
         // If we're on the wrong URL (public_html), redirect to correct one
-        if (currentUrl.includes('phooldelivery.example') && currentUrl.includes('/phool-delivery/public_html')) {
+        if (currentUrl.includes('phooldelivery.example') && currentUrl.includes('/phool-delivery-platform/public_html')) {
             const correctUrl = 'https://www.phooldelivery.example/';
             this.log('Fixing incorrect URL, redirecting to:', correctUrl);
             window.location.replace(correctUrl);
             return;
         }
-        
+
         // If we're on index listing page, redirect to main site
-        if (currentUrl.includes('Index of') || currentUrl.endsWith('/phool-delivery/public_html/')) {
+        if (currentUrl.includes('Index of') || currentUrl.endsWith('/phool-delivery-platform/public_html/')) {
             const correctUrl = 'https://www.phooldelivery.example/';
             this.log('Redirecting from directory listing to:', correctUrl);
             window.location.replace(correctUrl);
@@ -497,17 +497,17 @@ class PWAHelper {
     async detectBasePath() {
         // Detect the correct base path from current location
         const pathname = window.location.pathname;
-        
+
         // Remove trailing slashes and last segment if it's a file
         let basePath = pathname.split('/').filter(Boolean);
-        
-        // Check if we're in a subdirectory (like /phool-delivery/public_html or /phool-delivery)
-        if (basePath[0] === 'phool-delivery') {
+
+        // Check if we're in a subdirectory (like /phool-delivery-platform/public_html or /phool-delivery-platform)
+        if (basePath[0] === 'phool-delivery-platform') {
             // We're on localhost in a subdirectory
-            this.basePath = '/phool-delivery/public_html';
-            this.swPath = '/phool-delivery/public_html/sw.js';
-            this.manifestPath = '/phool-delivery/public_html/manifest.webmanifest';
-            this.startUrl = '/phool-delivery/public_html/';
+            this.basePath = '/phool-delivery-platform/public_html';
+            this.swPath = '/phool-delivery-platform/public_html/sw.js';
+            this.manifestPath = '/phool-delivery-platform/public_html/manifest.webmanifest';
+            this.startUrl = '/phool-delivery-platform/public_html/';
         } else {
             // Production server or root domain
             this.basePath = '';
@@ -515,7 +515,7 @@ class PWAHelper {
             this.manifestPath = '/manifest.webmanifest';
             this.startUrl = '/';
         }
-        
+
         this.log('Detected base path:', {
             basePath: this.basePath,
             swPath: this.swPath,
@@ -528,11 +528,11 @@ class PWAHelper {
     registerServiceWorker() {
         if ('serviceWorker' in navigator) {
             this.log('Service Worker supported');
-            
+
             window.addEventListener('load', () => {
                 const swUrl = this.swPath;
                 this.log('Registering Service Worker:', swUrl);
-                
+
                 navigator.serviceWorker.register(swUrl)
                     .then((registration) => {
                         this.log('SW registered successfully:', registration);
@@ -557,7 +557,7 @@ class PWAHelper {
             if (installButton) {
                 installButton.style.display = 'flex';
                 installButton.classList.add('pulsing');
-                
+
                 setTimeout(() => {
                     if (this.deferredPrompt && installButton.style.display === 'flex') {
                         this.showInstallGuidance();
@@ -575,12 +575,12 @@ class PWAHelper {
         // FIX: Enhanced app installed handler with environment-aware redirect
         window.addEventListener('appinstalled', (evt) => {
             this.log('🎊 PWA was installed successfully!');
-            
+
             if (installButton) {
                 installButton.style.display = 'none';
             }
             this.deferredPrompt = null;
-            
+
             // Force redirect to correct URL after installation (only if online)
             setTimeout(() => {
                 this.forceCorrectLandingPage();
@@ -591,11 +591,11 @@ class PWAHelper {
     // FIX: Environment-aware redirect after installation
     forceCorrectLandingPage() {
         const currentUrl = window.location.href;
-        
+
         if (this.isLocalhost) {
             // On localhost, stay on localhost
-            const localCorrectUrl = 'https://localhost/phool-delivery/public_html/';
-            if (currentUrl !== localCorrectUrl && !currentUrl.includes('localhost/phool-delivery/public_html')) {
+            const localCorrectUrl = 'https://localhost/phool-delivery-platform/public_html/';
+            if (currentUrl !== localCorrectUrl && !currentUrl.includes('localhost/phool-delivery-platform/public_html')) {
                 this.log('FORCE REDIRECT after install to LOCALHOST:', localCorrectUrl);
                 window.location.href = localCorrectUrl;
             }
@@ -612,7 +612,7 @@ class PWAHelper {
     showInstallPrompt() {
         if (this.deferredPrompt) {
             this.deferredPrompt.prompt();
-            
+
             this.deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
                     this.log('✅ User accepted install');
@@ -635,18 +635,18 @@ class PWAHelper {
     showManualInstallInstructions() {
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         let message = '';
-        
+
         if (isIOS) {
             message = 'To install: Tap share button 📤 → "Add to Home Screen"';
         } else {
             message = 'To install: Tap menu ⋮ → "Install App" or "Add to Home Screen"';
         }
-        
+
         this.showNotification(message, 'info', 8000);
     }
 
     isStandalone() {
-        return window.matchMedia('(display-mode: standalone)').matches || 
+        return window.matchMedia('(display-mode: standalone)').matches ||
                window.navigator.standalone;
     }
 
@@ -655,7 +655,7 @@ class PWAHelper {
             if (this.isStandalone()) {
                 this.log('Running as installed PWA');
                 document.body.classList.add('pwa-standalone');
-                
+
                 // FIX: Ensure correct URL in standalone mode
                 this.fixStandaloneURL();
             }
@@ -665,15 +665,15 @@ class PWAHelper {
     // FIX: Environment-aware URL fix for standalone mode
     fixStandaloneURL() {
         const currentUrl = window.location.href;
-        
+
         if (this.isLocalhost) {
             // Fix localhost URLs in standalone mode
-            const localCorrectUrl = 'https://localhost/phool-delivery/public_html/';
-            if (currentUrl.includes('/phool-delivery/public_html') || 
-                currentUrl.endsWith('/phool-delivery/public_html')) {
+            const localCorrectUrl = 'https://localhost/phool-delivery-platform/public_html/';
+            if (currentUrl.includes('/phool-delivery-platform/public_html') ||
+                currentUrl.endsWith('/phool-delivery-platform/public_html')) {
                 this.log('Fixing standalone mode URL on LOCALHOST from:', currentUrl);
                 window.history.replaceState({}, document.title, localCorrectUrl);
-                
+
                 // If replaceState doesn't work, do full redirect
                 setTimeout(() => {
                     if (window.location.href !== localCorrectUrl) {
@@ -684,11 +684,11 @@ class PWAHelper {
         } else {
             // Fix online URLs in standalone mode
             const onlineCorrectUrl = 'https://www.phooldelivery.example/';
-            if (currentUrl.includes('/phool-delivery/public_html') || 
-                currentUrl.endsWith('/phool-delivery/public_html')) {
+            if (currentUrl.includes('/phool-delivery-platform/public_html') ||
+                currentUrl.endsWith('/phool-delivery-platform/public_html')) {
                 this.log('Fixing standalone mode URL on ONLINE from:', currentUrl);
                 window.history.replaceState({}, document.title, onlineCorrectUrl);
-                
+
                 // If replaceState doesn't work, do full redirect
                 setTimeout(() => {
                     if (window.location.href !== onlineCorrectUrl) {
@@ -735,7 +735,7 @@ class PWAHelper {
                 <button class="pwa-notification-close">&times;</button>
             </div>
         `;
-        
+
         document.body.appendChild(notification);
         setTimeout(() => notification.classList.add('show'), 100);
 
@@ -839,24 +839,24 @@ if (!document.querySelector('#pwa-notification-styles')) {
             transition: transform 0.3s ease;
             border-left: 4px solid #007bff;
         }
-        
+
         .pwa-notification.show {
             transform: translateX(0);
         }
-        
+
         .pwa-notification-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 12px 16px;
         }
-        
+
         .pwa-notification-message {
             flex: 1;
             margin-right: 10px;
             font-size: 14px;
         }
-        
+
         .pwa-notification-close {
             background: none;
             border: none;
@@ -864,31 +864,31 @@ if (!document.querySelector('#pwa-notification-styles')) {
             cursor: pointer;
             color: #666;
         }
-        
+
         .pwa-notification-success {
             border-left-color: #28a745;
         }
-        
+
         .pwa-notification-error {
             border-left-color: #dc3545;
         }
-        
+
         .pwa-notification-warning {
             border-left-color: #ffc107;
         }
-        
+
         .pwa-notification-info {
             border-left-color: #17a2b8;
         }
-        
+
         .pwa-standalone .install-button {
             display: none !important;
         }
-        
+
         .offline {
             opacity: 0.7;
         }
-        
+
         .offline::before {
             content: "⚠️ Offline";
             position: fixed;

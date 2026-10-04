@@ -33,7 +33,6 @@ RewriteRule ^(.*)$ /index.php?url=$1 [QSA,L]
 # Set correct MIME types
 AddType application/javascript js
 AddType application/json json
-AddEncoding gzip js json
 
 # Enable compression
 <IfModule mod_deflate.c>
@@ -59,12 +58,12 @@ Options -Indexes
 # Deny direct HTTP access to this directory's files unless the URL explicitly points to /public/
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} !/phool-delivery/delivery-panel/public/ [NC]
+    RewriteCond %{REQUEST_URI} !/phool-delivery-platform/delivery-panel/public/ [NC]
     RewriteRule ^.*$ - [F]
 </IfModule>
 
 # Deny HTTP access to sensitive directories if DocumentRoot is misconfigured
-RedirectMatch 403 ^/phool-delivery/delivery-panel/(?:app|bootstrap|config|storage|tests|vendor|database)/.*$
+RedirectMatch 403 ^/phool-delivery-platform/delivery-panel/(?:app|bootstrap|config|storage|tests|vendor|database)/.*$
 
 # Deny access to environment files
 <FilesMatch "^\.env$">

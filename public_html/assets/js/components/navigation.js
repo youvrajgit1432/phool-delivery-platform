@@ -43,7 +43,7 @@ function initNavigation() {
             
             if (searchTerm) {
                 // Search functionality - dynamically detect base URL
-                var basePath = window.location.pathname.includes('/phool-delivery/') ? '/phool-delivery/public_html' : '';
+                var basePath = window.location.pathname.includes('/phool-delivery-platform/') ? '/phool-delivery-platform/public_html' : '';
                 window.location.href = basePath + '/search?q=' + encodeURIComponent(searchTerm);
                 searchInput.value = '';
             }
@@ -60,7 +60,7 @@ function initNavigation() {
             
             if (searchTerm) {
                 // Search functionality - dynamically detect base URL
-                var basePath = window.location.pathname.includes('/phool-delivery/') ? '/phool-delivery/public_html' : '';
+                var basePath = window.location.pathname.includes('/phool-delivery-platform/') ? '/phool-delivery-platform/public_html' : '';
                 window.location.href = basePath + '/search?q=' + encodeURIComponent(searchTerm);
                 searchInput.value = '';
                 mobileSearchBar.classList.remove('active');

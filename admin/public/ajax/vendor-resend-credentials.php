@@ -102,7 +102,7 @@ try {
 
             // Timeout and basic settings
             $mail->Timeout = 30;
-            $fromAddress = !empty($smtp_username) ? $smtp_username : 'phooldelivery@phool-delivery.local';
+            $fromAddress = !empty($smtp_username) ? $smtp_username : 'phooldelivery@phool-delivery-platform.local';
             $mail->setFrom($fromAddress, 'Phool Delivery');
             $mail->addAddress($vendor['email']);
             $mail->isHTML(true);
